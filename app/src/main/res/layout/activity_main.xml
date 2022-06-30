@@ -61,14 +61,18 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:hint="e.g. Gaymer"
+                                    android:id="@+id/nameEntry"
                                     android:inputType="textCapWords"
                                     />
                         </com.google.android.material.textfield.TextInputLayout>
                         <Button
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:paddingTop="16dp"
+                            android:paddingBottom="16dp"
                             android:layout_marginTop="16dp"
                             android:textSize="16sp"
+                            android:id="@+id/buttonStart"
                             android:text="Start"/>
 
                 </LinearLayout>
