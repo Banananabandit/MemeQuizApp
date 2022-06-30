@@ -4,6 +4,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:background="@drawable/bg_image"
+    android:orientation="vertical"
+    android:gravity="center"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
@@ -11,11 +13,65 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/cardview_dark_background"
             android:text="Meme Quiz App!"
             android:textSize="25sp"
             android:textStyle="bold"
+            android:padding="8dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:background="@color/transparent_grey_60"
             android:gravity="center"
             android:textColor="@color/white"
             />
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:background="@color/white"
+            app:cardCornerRadius="10dp">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="16dp"
+                    android:orientation="vertical">
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Welcome, Gamer!"
+                            android:textSize="30sp"
+                            android:textStyle="bold"
+                            android:gravity="center"
+                            android:textColor="@color/cardview_dark_background" />
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="16dp"
+                            android:text="Enter your name"
+                            android:textSize="16sp"
+                            android:gravity="center"
+                            android:textColor="@color/cardview_dark_background" />
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                            android:layout_marginTop="20dp">
+                                <androidx.appcompat.widget.AppCompatEditText
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:hint="e.g. Gaymer"
+                                    android:inputType="textCapWords"
+                                    />
+                        </com.google.android.material.textfield.TextInputLayout>
+                        <Button
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="16dp"
+                            android:textSize="16sp"
+                            android:text="Start"/>
+
+                </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
 </LinearLayout>
