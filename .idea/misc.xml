@@ -6,10 +6,12 @@
         <entry key="app/src/main/res/drawable/bg_image.xml" value="0.15729166666666666" />
         <entry key="app/src/main/res/drawable/correct_option_border_bg.xml" value="0.2324074074074074" />
         <entry key="app/src/main/res/drawable/default_option_border_bg.xml" value="0.2864583333333333" />
+        <entry key="app/src/main/res/drawable/result_bg_image.xml" value="0.2324074074074074" />
         <entry key="app/src/main/res/drawable/selected_option_border_bg.xml" value="0.2324074074074074" />
         <entry key="app/src/main/res/drawable/worng_option_border_bg.xml" value="0.2324074074074074" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.2703125" />
         <entry key="app/src/main/res/layout/activity_quiz_questions.xml" value="0.2703125" />
+        <entry key="app/src/main/res/layout/activity_quiz_results.xml" value="0.2703125" />
       </map>
     </option>
   </component>

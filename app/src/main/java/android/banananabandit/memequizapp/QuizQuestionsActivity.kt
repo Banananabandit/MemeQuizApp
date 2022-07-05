@@ -132,10 +132,11 @@ class QuizQuestionsActivity : AppCompatActivity(), View.OnClickListener {
                 }
             }
             R.id.buttonSubmitAnswer -> {
-
+                // Increment our questionPosition only if the options have been reset
+                // I don't really like this, may refactor this logic
+                // TODO: refactor how we get to the next question
                 if (mSelectedAnswerPosition == 0) {
                     mCurrentPosition++
-
                     when {
                         mCurrentPosition <= mQuestionsList!!.size -> {
                             setQuestion()
@@ -143,8 +144,6 @@ class QuizQuestionsActivity : AppCompatActivity(), View.OnClickListener {
                         else -> {
                             Toast.makeText(this, "FIniShedDD", Toast.LENGTH_LONG).show()
                         }
-
-
                     }
                 } else {
                     val question = mQuestionsList?.get(mCurrentPosition - 1)
