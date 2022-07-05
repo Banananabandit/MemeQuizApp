@@ -7,10 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import android.widget.Button
-import android.widget.ImageView
-import android.widget.ProgressBar
-import android.widget.TextView
+import android.widget.*
 import androidx.core.content.ContextCompat
 
 class QuizQuestionsActivity : AppCompatActivity(), View.OnClickListener {
@@ -57,7 +54,7 @@ class QuizQuestionsActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     private fun setQuestion() {
-
+        resetViewsToDefaultOptions()
         val question = mQuestionsList!![mCurrentPosition - 1]
         questionImage?.setImageResource(question.image)
         progressBar?.progress = mCurrentPosition
@@ -76,6 +73,7 @@ class QuizQuestionsActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     // We call this method before we change the text view that we have selected
+    // We need the array list here just for the covenience of cycling through all of the views to set them
     private fun resetViewsToDefaultOptions() {
         val options = ArrayList<TextView>()
         answerOne?.let {
@@ -134,8 +132,78 @@ class QuizQuestionsActivity : AppCompatActivity(), View.OnClickListener {
                 }
             }
             R.id.buttonSubmitAnswer -> {
-                //Submit answer logic lol
+
+                if (mSelectedAnswerPosition == 0) {
+                    mCurrentPosition++
+
+                    when {
+                        mCurrentPosition <= mQuestionsList!!.size -> {
+                            setQuestion()
+                        }
+                        else -> {
+                            Toast.makeText(this, "FIniShedDD", Toast.LENGTH_LONG).show()
+                        }
+
+
+                    }
+                } else {
+                    val question = mQuestionsList?.get(mCurrentPosition - 1)
+                    if (question!!.correctAnswer != mSelectedAnswerPosition) {
+                        setCorrectWrongAnswerView(mSelectedAnswerPosition, R.drawable.wrong_option_border_bg)
+                    }
+                    // Regardless if wrong or not always display the correct answer
+                    setCorrectWrongAnswerView(question.correctAnswer, R.drawable.correct_option_border_bg)
+
+                    if (mCurrentPosition == mQuestionsList!!.size) {
+                        submitAnswerButton?.text = "FINISH"
+                    } else {
+                        submitAnswerButton?.text = "GO TO NXT QUESTION"
+                    }
+                    mSelectedAnswerPosition = 0
+                }
+
+            }
+        }
+    }
+    // This function is to assign the color to the correct/wrong answers
+    private fun setCorrectWrongAnswerView(answer : Int, drawableView : Int) {
+        when(answer) {
+            1 -> {
+                answerOne?.background = ContextCompat.getDrawable(
+                    this,
+                    drawableView
+                )
+            }
+            2 -> {
+                answerTwo?.background = ContextCompat.getDrawable(
+                    this,
+                    drawableView
+                )
+            }
+            3 -> {
+                answerThree?.background = ContextCompat.getDrawable(
+                    this,
+                    drawableView
+                )
+            }
+            4 -> {
+                answerFour?.background = ContextCompat.getDrawable(
+                    this,
+                    drawableView
+                )
             }
         }
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+

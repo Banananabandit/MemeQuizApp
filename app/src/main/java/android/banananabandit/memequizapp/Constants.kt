@@ -36,7 +36,7 @@ object Constants {
 
         val q4 = Question(
             4,
-            R.drawable.onedoesnnotsimply,
+            R.drawable.shutupandtakemymoney,
             "In which situation this meme is used mostly",
             "When you like something that you see advertised",
             "When you pay for bills on time",
@@ -127,7 +127,7 @@ object Constants {
 
         val q13 = Question(
             13,
-            R.drawable.yodawg,
+            R.drawable.whatifitoldyou,
             "What is the name of this meme",
             "What if I told you", "Morpehus Knows",
             "We have to talk", "Morphin Time Doesnt Exist",
@@ -196,7 +196,7 @@ object Constants {
 
         val q20 = Question(
             20,
-            R.drawable.rollsafe,
+            R.drawable.epichandshake,
             "In which situation this meme is used mostly",
             "To tell a best friend story",
             "To tell a story when you made a friend",
