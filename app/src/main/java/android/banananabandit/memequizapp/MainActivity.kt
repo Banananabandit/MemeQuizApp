@@ -25,6 +25,7 @@ class MainActivity : AppCompatActivity() {
         buttonStartQuiz.setOnClickListener {
             if (nameEntry.text.isNotEmpty()) {
                 val intent = Intent(this, QuizQuestionsActivity::class.java)
+                intent.putExtra(Constants.USER_NAME, nameEntry.text.toString())
                 startActivity(intent)
                 finish()
             } else if (nameEntry.text.isEmpty()) {

@@ -1,6 +1,7 @@
 package android.banananabandit.memequizapp
 
 import android.content.ContentValues.TAG
+import android.content.Intent
 import android.graphics.Color
 import android.graphics.Typeface
 import androidx.appcompat.app.AppCompatActivity
@@ -15,6 +16,8 @@ class QuizQuestionsActivity : AppCompatActivity(), View.OnClickListener {
     private var mCurrentPosition : Int = 1
     private var mQuestionsList : ArrayList<Question>? = null
     private var mSelectedAnswerPosition : Int = 0
+    private var mUserName : String? = null
+    private var mCorrectAnswers : Int = 0
 
     private var progressBar : ProgressBar? = null
     private var progressNumber : TextView? = null
@@ -29,6 +32,8 @@ class QuizQuestionsActivity : AppCompatActivity(), View.OnClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_quiz_questions)
+
+        mUserName = intent.getStringExtra(Constants.USER_NAME)
 
         progressBar = findViewById(R.id.progressBar)
         progressNumber = findViewById(R.id.textViewNumberOfQuestions)
@@ -142,14 +147,19 @@ class QuizQuestionsActivity : AppCompatActivity(), View.OnClickListener {
                             setQuestion()
                         }
                         else -> {
-                            Toast.makeText(this, "FIniShedDD", Toast.LENGTH_LONG).show()
+                            val intent = Intent(this, QuizResultsActivity::class.java)
+                            intent.putExtra(Constants.USER_NAME, mUserName)
+                            intent.putExtra(Constants.CORRECT_ANSWERS, mCorrectAnswers)
+                            intent.putExtra(Constants.TOTAL_QUESTIONS, mQuestionsList?.size)
+                            startActivity(intent)
+                            finish()
                         }
                     }
                 } else {
                     val question = mQuestionsList?.get(mCurrentPosition - 1)
                     if (question!!.correctAnswer != mSelectedAnswerPosition) {
                         setCorrectWrongAnswerView(mSelectedAnswerPosition, R.drawable.wrong_option_border_bg)
-                    }
+                    } else {mCorrectAnswers++}
                     // Regardless if wrong or not always display the correct answer
                     setCorrectWrongAnswerView(question.correctAnswer, R.drawable.correct_option_border_bg)
 
