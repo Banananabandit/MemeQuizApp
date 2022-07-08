@@ -10,7 +10,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
+        android:gravity="top|center_horizontal"
         android:orientation="vertical"
         android:padding="16dp">
 
@@ -109,16 +109,21 @@
             android:textColor="#7A8089"
             android:textSize="18sp"
             tools:text="Answer 4" />
-        <Button
-            android:id="@+id/buttonSubmitAnswer"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:background="@color/design_default_color_primary"
-            android:text="Submit"
-            android:textColor="@color/white"
-            android:textSize="16sp"
-            android:textStyle="bold"/>
+            android:layout_height="match_parent"
+            android:gravity="bottom">
+            <Button
+                android:id="@+id/buttonSubmitAnswer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:background="@color/design_default_color_primary"
+                android:text="Submit"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+        </LinearLayout>
     </LinearLayout>
 
 </ScrollView>

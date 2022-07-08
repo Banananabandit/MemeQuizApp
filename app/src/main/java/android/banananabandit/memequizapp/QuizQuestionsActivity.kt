@@ -4,6 +4,7 @@ import android.content.ContentValues.TAG
 import android.content.Intent
 import android.graphics.Color
 import android.graphics.Typeface
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -32,6 +33,11 @@ class QuizQuestionsActivity : AppCompatActivity(), View.OnClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_quiz_questions)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+            window.decorView.windowInsetsController!!.hide(
+                android.view.WindowInsets.Type.statusBars()
+            )
+        }
 
         mUserName = intent.getStringExtra(Constants.USER_NAME)
 
@@ -59,6 +65,10 @@ class QuizQuestionsActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     private fun setQuestion() {
+        answerOne?.isClickable = true
+        answerTwo?.isClickable = true
+        answerThree?.isClickable = true
+        answerFour?.isClickable = true
         resetViewsToDefaultOptions()
         val question = mQuestionsList!![mCurrentPosition - 1]
         questionImage?.setImageResource(question.image)
@@ -101,6 +111,8 @@ class QuizQuestionsActivity : AppCompatActivity(), View.OnClickListener {
                 R.drawable.default_option_border_bg
             )
         }
+        submitAnswerButton?.isEnabled = false
+        submitAnswerButton?.isClickable = false
     }
 
     private fun selectedOption(textView : TextView, selectedOptionNumber : Int) {
@@ -112,6 +124,8 @@ class QuizQuestionsActivity : AppCompatActivity(), View.OnClickListener {
             this,
             R.drawable.selected_option_border_bg
         )
+        submitAnswerButton?.isEnabled = true
+        submitAnswerButton?.isClickable = true
     }
 
     override fun onClick(view : View?) {
@@ -156,6 +170,10 @@ class QuizQuestionsActivity : AppCompatActivity(), View.OnClickListener {
                         }
                     }
                 } else {
+                    answerOne?.isClickable = false
+                    answerTwo?.isClickable = false
+                    answerThree?.isClickable = false
+                    answerFour?.isClickable = false
                     val question = mQuestionsList?.get(mCurrentPosition - 1)
                     if (question!!.correctAnswer != mSelectedAnswerPosition) {
                         setCorrectWrongAnswerView(mSelectedAnswerPosition, R.drawable.wrong_option_border_bg)

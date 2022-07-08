@@ -7,6 +7,7 @@ import android.graphics.Color
 import android.graphics.Color.parseColor
 import android.graphics.LinearGradient
 import android.graphics.drawable.GradientDrawable
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.animation.LinearInterpolator
@@ -20,6 +21,12 @@ class QuizResultsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_quiz_results)
 
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+            window.decorView.windowInsetsController!!.hide(
+                android.view.WindowInsets.Type.statusBars()
+            )
+        }
+
         val nameTextView = findViewById<TextView>(R.id.result_name)
         val finalResult = findViewById<TextView>(R.id.final_result)
         val finishButton = findViewById<Button>(R.id.finish_button)
@@ -31,7 +38,7 @@ class QuizResultsActivity : AppCompatActivity() {
 
 
         val colorAnimation = ObjectAnimator.ofInt(nothingTextView, "textColor", Color.RED, Color.BLUE, Color.GREEN, Color.MAGENTA)
-        colorAnimation.duration = 10000
+        colorAnimation.duration = 5000
         colorAnimation.interpolator = LinearInterpolator()
         colorAnimation.repeatCount = 4
         colorAnimation.start()

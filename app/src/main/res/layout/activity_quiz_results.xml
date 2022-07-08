@@ -66,10 +66,11 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:layout_marginBottom="16dp"
+                android:textStyle="bold"
                 android:text="NOTHING!"
-                android:textSize="16sp"
+                android:textSize="32sp"
                 android:gravity="center"
-                android:textColor="@color/cardview_dark_background" />
+                />
 
             <Button
                 android:id="@+id/finish_button"
